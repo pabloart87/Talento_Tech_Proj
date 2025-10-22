@@ -1,0 +1,47 @@
+nav {
+  background-color: aquamarine;
+  padding: 1 rem 2 rem;
+  box-shadow: 0px 0px 2px 1px black;
+}
+
+nav ul{
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav li{
+  display: inline-block;
+}
+
+nav a{
+  color: blue;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3 ease;
+}
+
+nav a:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+#lista-productos{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#lista-productos li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
