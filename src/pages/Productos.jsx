@@ -9,7 +9,7 @@ export default function Productos() {
   const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
-    fetch("https://68d482e3214be68f8c696ae2.mockapi.io/api/productos")
+    fetch("https://68cc925a716562cf5077d010.mockapi.io/API_V1/producto  ")
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         setProductos(datos);
@@ -42,8 +42,10 @@ export default function Productos() {
           <br />
           Precio: ${producto.precio}
           <br />
+          Categoria: ${producto.categoria}
+          <br />
           <img src={producto.avatar} alt={producto.nombre} width="80%" />
-          <Link to={`/productos/${producto.id}`} state={{producto}}> <button>Ver mas</button> </Link>
+          <Link to={`/productos/${producto.categoria || "sin-categoria"}/${producto.id}`} state={{producto}}> <button>Ver mas</button> </Link>
           <button onClick={() => agregarAlCarrito(producto)}>Agregar al carrito</button>
         </li>
       ))}
