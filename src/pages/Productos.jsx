@@ -44,7 +44,7 @@ export default function Productos() {
           <br />
           Categoria: ${producto.categoria}
           <br />
-          <img src={producto.avatar} alt={producto.nombre} width="80%" />
+          <img src={producto.avatar} alt={producto.nombre} width="80%" height="50%" />
           <Link to={`/productos/${producto.categoria || "sin-categoria"}/${producto.id}`} state={{producto}}> <button>Ver mas</button> </Link>
           <button onClick={() => agregarAlCarrito(producto)}>Agregar al carrito</button>
         </li>
