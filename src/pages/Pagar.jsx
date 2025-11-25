@@ -1,16 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAppContext } from '../context/AppContext';
 
-export default function Pagar({
-  isAuthenticated,
-  setIsAuthenticated,
-  usuario,
-  setUsuario,
-}) {
+export default function Pagar() {
+  const{ usuario, cerrarSesion, carrito, vaciarCarrito } = useAppContext();
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Datos del carrito
-  const carrito = location.state?.carrito || [];
   // Calculo del total
   const total = carrito.reduce(
     (suma, producto) => suma + Number(producto.precio),
@@ -21,12 +16,6 @@ export default function Pagar({
   const comprar = () => {
     alert("¡Compra realizada con éxito!");
     navigate("/productos");
-  };
-
-  // Función para cerrar sesión
-  const cerrarSesion = () => {
-    setIsAuthenticated(false);
-    setUsuario({ nombre: "", email: "" });
   };
 
   return (

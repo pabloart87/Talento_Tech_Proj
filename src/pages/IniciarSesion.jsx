@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAppContext } from '../context/AppContext';
 
-export default function IniciarSesion({ setIsAuthenticated, setUsuario }) {
+export default function IniciarSesion() {
   const navigate = useNavigate();
   const ubicacion = useLocation();
+
+  const { setIsAuthenticated, setUsuario } = useAppContext();
  
   const [formulario, setFormulario] = useState({ nombre: '', email: '' });
 
