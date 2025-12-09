@@ -1,42 +1,88 @@
-import React, {useState} from "react";
-import { Routes, Route } from "react-router-dom";
+import React from "react";
 import Inicio from "./pages/Inicio";
 import Servicios from "./pages/Servicios";
 import Navbar from "./pages/Navbar";
-import Quienes_somos from "./pages/Quienes_somos";
 import Productos from "./pages/productos";
+import Quienes_somos from "./pages/Quienes_somos";
 import ProductoDetalle from "./pages/ProductoDetalle";
 import Pagar from "./pages/Pagar";
 import RutaProtegida from "./pages/RutaProtegida";
 import IniciarSesion from "./pages/IniciarSesion";
 import Footer from "./pages/Footer";
-import { AppProvider } from "./context/AppContext"
+import { Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CartContext";
+import Dashboard from "./pages/Dashboard";
+import { ProductsProvider } from "./context/ProductsContext";
+import FormularioProducto from './components/FormularioProducto';
+import EliminarProducto from './components/EliminarProducto';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
-  return(
-    <AppProvider>
+  return (
     <div>
+      <AuthProvider>
+      <CartProvider>
+      <ProductsProvider>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Inicio/>}/>
-        <Route path="/Servicios" element={<Servicios/>}/>
-        <Route path="/Productos" element={<Productos/>}/>
-        <Route path="/Quienes_somos" element={<Quienes_somos/>}/>          
-        <Route path="/productos/:categoria/:id" element={<ProductoDetalle/>}/>
-        <Route path="/iniciar-sesion" element={<IniciarSesion/>
-          }
-        />
-        <Route path="/pagar" element={<RutaProtegida>
-            <Pagar/>   
-            </RutaProtegida>
-          }
-         />
+        {/* RUTAS PÚBLICAS */}
+        <Route path="/" element={<Inicio />} />
+        <Route path="/servicios" element={<Servicios />} />
+        <Route path="/productos" element={<Productos />} />
+        <Route path="/productos/:id" element={<ProductoDetalle />} />
+        <Route path="/Quienes_somos" element={<Quienes_somos/>}/>
+        <Route path="/productos/:categoria/:id" element={<ProductoDetalle />} />
+        <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+
+        {/* RUTAS PROTEGIDAS USUARIOS */}
+        <Route path="/pagar" element={<RutaProtegida><Pagar /></RutaProtegida>}/>
+        
+
+        {/* RUTAS PROTEGIDAS ADMIN */}
+        <Route path="/dashboard" element={<RutaProtegida soloAdmin={true}><Dashboard /></RutaProtegida>}/>
+
+        {/* Ruta para formulario Agrega/Edita*/}
+              <Route
+                path="/formulario-producto"
+                element={
+                  <RutaProtegida>
+                    <FormularioProducto />
+                  </RutaProtegida>
+                }
+              />
+             
+              {/* Ruta para ELIMINAR producto */}
+              <Route
+                path="/eliminar-producto"
+                element={
+                  <RutaProtegida>
+                    <EliminarProducto />
+                  </RutaProtegida>
+                }
+              />
+             
+              {/* Redirección por defecto */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+
       </Routes>
       <Footer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        draggable
+        pauseOnHover      
+      />
+      </ProductsProvider>
+      </CartProvider>
+      </AuthProvider>
     </div>
-    </AppProvider>
-  )
-}
-
-export default App
+  );
+} export default App;

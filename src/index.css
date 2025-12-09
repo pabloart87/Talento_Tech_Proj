@@ -56,3 +56,50 @@ footer{
   color: white;
   border-radius: 10px;
 }
+
+main {
+  width: 70%;
+  padding-left: 15%;
+}
+
+/* Botones ADMIN en Componente Productos - Con Shadow Negro */
+.btn-editar, .btn-eliminar {
+  padding: 8px 16px;
+  margin: 5px;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* BOTÓN EDITAR - Verde */
+.btn-editar {
+  background: #2E7D32;
+  color: white;
+  border-color: #2E7D32;
+}
+
+.btn-editar:hover {
+  background: #63a267;
+  color: white;
+  border-color: #63a267;
+  box-shadow: 5 0 6px rgba(0, 0, 0, 0.2); /* Shadow negro con blur */
+  transform: translateY(-1px);
+}
+
+/* BOTÓN ELIMINAR - Rojo */
+.btn-eliminar {
+  background: #a91616;
+  color: white;
+  border-color: #C62828;
+}
+
+.btn-eliminar:hover {
+  background: #a05050;
+  color: white;
+  border-color: #a05050;
+  box-shadow: 5 0 6px rgba(0, 0, 0, 0.2); /* Shadow negro con blur */
+  transform: translateY(-1px);
+}
