@@ -1,5 +1,5 @@
 {
-    "rootes": [
+    "routes": [
         {
             "src": "/[^.]+",
             "dest": "/index.html",
