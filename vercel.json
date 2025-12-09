@@ -1,0 +1,9 @@
+{
+    "rootes": [
+        {
+            "src": "/[^.]+",
+            "dest": "/index.html",
+            "status": 200
+        }
+    ]
+}
