@@ -18,13 +18,13 @@ export default function CarritoCompras() {
       {carrito.length === 0 ? (
         <p>El carrito está vacío</p>
       ) : (
-        <>
+        <div className="row">
           {carrito.map((item) => (
-            <div key={item.id}>
+            <div key={item.id} className="col-12 col-md-6 col-lg-4 mb-4">
                 {item.nombre} - ${Number(item.precio).toFixed(3)}
                 (Cantidad: {item.cantidad || 1})
                 <button onClick={() => quitarCantidad(item.id)}>-</button>
-                 <button onClick={() => agregarCantidad(item.id)}>+</button>
+                <button onClick={() => agregarCantidad(item.id)}>+</button>
             </div>
           ))}
           <div>
@@ -33,7 +33,7 @@ export default function CarritoCompras() {
           </div>
           <button onClick={vaciarCarrito}>Vaciar Carrito</button>
           <button onClick={irAPagar}>Pagar</button>
-        </>
+        </div>
       )}
     </div>
   );

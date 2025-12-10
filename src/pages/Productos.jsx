@@ -112,7 +112,7 @@ export default function Productos() {
                   src={producto.avatar}
                   alt={producto.nombre}
                   className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
+                  style={{ height: "200px", objectFit: "contain" }}
                 />
                
                 <div className="card-body d-flex flex-column">

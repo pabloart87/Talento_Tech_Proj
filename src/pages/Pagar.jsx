@@ -43,15 +43,15 @@ export default function Pagar() {
         <h2 className="mb-4">Vas a comprar:</h2>
 
         {carrito.length > 0 ? (
-          <>
+          <div>
             {carrito.map((producto) => {
               const cantidad = Number(producto.cantidad || 1);
               const precioUnitario = Number(producto.precio || 0);
               const subtotal = cantidad * precioUnitario;
               return (
-                <div key={producto.id} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                  <img src={producto.avatar} alt={producto.nombre} width="60" />
-                  <div>
+                <div key={producto.id} className="row">
+                  <img src={producto.avatar} alt={producto.nombre} width="60" className="col-6" />
+                  <div className="col-6">
                     <div className="fs-5 fw-bold text-primary">{producto.nombre}</div>
                     <div>Precio unidad: ${Number(precioUnitario).toFixed(3)}</div>
                     <div className="border-bottom">Cantidad: {cantidad}
@@ -64,7 +64,7 @@ export default function Pagar() {
               );
             })}
             <h3 className="fs-4 fw-bold text-dark bg-light rounded-4 shadow-sm p-2">Total a pagar: ${Number(total).toFixed(3)}</h3>
-          </>
+          </div>
 
         ) : (
           <p>No hay productos en el carrito</p>
